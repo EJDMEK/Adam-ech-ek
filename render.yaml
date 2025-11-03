@@ -1,11 +1,7 @@
 services:
   - type: web
     name: preklad-nemcina-web
-    env: php
-    buildCommand: ""
-    startCommand: php -S 0.0.0.0:$PORT router.php
-    envVars:
-      - key: PHP_VERSION
-        value: "8.2"
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
     healthCheckPath: /
     plan: free
