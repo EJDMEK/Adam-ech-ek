@@ -14,12 +14,45 @@ $extension = strtolower(pathinfo($uri, PATHINFO_EXTENSION));
 
 // Check if it's a static file that exists
 if (in_array($extension, $staticExtensions) && file_exists($filePath) && !is_dir($filePath)) {
-    return false; // Serve the file as-is
+    // Set proper Content-Type for CSS and JS
+    $mimeTypes = [
+        'css' => 'text/css',
+        'js' => 'application/javascript',
+        'svg' => 'image/svg+xml',
+        'woff' => 'font/woff',
+        'woff2' => 'font/woff2',
+        'ttf' => 'font/ttf',
+        'eot' => 'application/vnd.ms-fontobject'
+    ];
+    if (isset($mimeTypes[$extension])) {
+        header('Content-Type: ' . $mimeTypes[$extension]);
+    }
+    readfile($filePath);
+    return true;
 }
 
 // Also serve files from assets directory
 if (strpos($uri, '/assets/') === 0 && file_exists($filePath) && !is_dir($filePath)) {
-    return false;
+    // Set proper Content-Type
+    $ext = strtolower(pathinfo($uri, PATHINFO_EXTENSION));
+    $mimeTypes = [
+        'css' => 'text/css',
+        'js' => 'application/javascript',
+        'svg' => 'image/svg+xml',
+        'jpg' => 'image/jpeg',
+        'jpeg' => 'image/jpeg',
+        'png' => 'image/png',
+        'gif' => 'image/gif',
+        'webp' => 'image/webp',
+        'woff' => 'font/woff',
+        'woff2' => 'font/woff2',
+        'ttf' => 'font/ttf'
+    ];
+    if (isset($mimeTypes[$ext])) {
+        header('Content-Type: ' . $mimeTypes[$ext]);
+    }
+    readfile($filePath);
+    return true;
 }
 
 // Serve files from uploads directory
