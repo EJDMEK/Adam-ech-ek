@@ -1,0 +1,37 @@
+✅ CO UŽ MÁTE:
+- Git repozitář inicializovaný
+- První commit vytvořený
+- Všechny soubory připravené
+
+📋 CO TEĎ DĚLAT:
+
+1. VOLITELNĚ: Nastavit Git jméno a email (doporučeno)
+   Spusťte v terminálu:
+   
+   git config --global user.name "Vaše Jméno"
+   git config --global user.email "vas-email@example.com"
+
+2. VYTVOŘIT REPOZITÁŘ NA GITHUB:
+   - Jděte na https://github.com a přihlaste se
+   - Klikněte na "+" → "New repository"
+   - Název: preklad-nemcina-web
+   - NECHCE zaškrtnout "Initialize with README"
+   - Klikněte "Create repository"
+
+3. PŘIPOJIT K GITHUB A NAHRÁT:
+   Po vytvoření repozitáře na GitHub spusťte tyto příkazy
+   (nahraďte YOUR_USERNAME vaším GitHub uživatelským jménem):
+   
+   git remote add origin https://github.com/YOUR_USERNAME/preklad-nemcina-web.git
+   git branch -M main
+   git push -u origin main
+
+4. NASADIT NA RENDER:
+   - Jděte na https://render.com
+   - Přihlaste se přes GitHub
+   - "New +" → "Web Service"
+   - Vyberte váš repozitář
+   - Render automaticky nasadí web
+
+Podrobnější návod: GITHUB-RENDER-NAVOD.md
+
