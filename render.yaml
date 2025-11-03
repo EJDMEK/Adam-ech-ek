@@ -8,3 +8,4 @@ services:
       - key: PHP_VERSION
         value: "8.2"
     healthCheckPath: /
+    plan: free
