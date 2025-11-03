@@ -1,0 +1,48 @@
+# Enable Rewrite Engine
+RewriteEngine On
+
+# Set base directory (adjust if site is in subdirectory)
+RewriteBase /
+
+# Language routing: /cz/ and /de/ prefixes
+# Handle /cz/page or /de/page -> page.php?lang=cz
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_URI} !^/(cz|de)/clanky/
+RewriteRule ^(cz|de)/([a-z0-9-]+)/?$ $2.php?lang=$1 [L,QSA]
+
+# Handle /cz/ or /de/ -> index.php?lang=cz
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(cz|de)/?$ index.php?lang=$1 [L,QSA]
+
+# Friendly URLs for articles with language prefix
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(cz|de)/clanky/([a-z0-9-]+)/?$ clanky.php?lang=$1&slug=$2 [L,QSA]
+
+# Friendly URLs for articles without language prefix (fallback to current language)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^clanky/([a-z0-9-]+)/?$ clanky.php?slug=$1 [L,QSA]
+
+# Force trailing slash for directories (optional)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^([^/]+)/$ $1.html [L]
+
+# Security headers
+<IfModule mod_headers.c>
+    Header set X-Content-Type-Options "nosniff"
+    Header set X-Frame-Options "SAMEORIGIN"
+    Header set X-XSS-Protection "1; mode=block"
+</IfModule>
+
+# Prevent directory browsing
+Options -Indexes
+
+# Protect admin directory
+<FilesMatch "^(config\.php|\.htaccess)$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+

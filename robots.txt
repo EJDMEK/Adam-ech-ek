@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /contact-submissions/
+Disallow: /uploads/
+
+Sitemap: https://soudnipreklady-nemcina.cz/sitemap.xml
+
+
+
+

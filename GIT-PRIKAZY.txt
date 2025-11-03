@@ -1,0 +1,25 @@
+# Git příkazy pro nahrání na GitHub
+
+## 1. První commit (provedu za vás)
+git commit -m "Initial commit - Překladatelský web připravený pro Render"
+
+## 2. Vytvoření repozitáře na GitHub
+
+Jděte na https://github.com a:
+1. Klikněte na "+" → "New repository"
+2. Název: preklad-nemcina-web
+3. NECHCE zaškrtnout "Initialize with README"
+4. Klikněte "Create repository"
+
+## 3. Připojení k GitHubu (nahraďte YOUR_USERNAME a YOUR_REPO_NAME)
+
+git remote add origin https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git
+git branch -M main
+git push -u origin main
+
+## 4. Pro budoucí aktualizace
+
+git add .
+git commit -m "Popis změn"
+git push
+
