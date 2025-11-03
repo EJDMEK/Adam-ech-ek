@@ -6,13 +6,9 @@ Kompletní návod pro nahrání webu na GitHub a nasazení na Render.com.
 
 ## Krok 1: Příprava projektu pro GitHub
 
-### 1.1. Ověření .gitignore
+### 1.1. Git konfigurace
 
-Soubor `.gitignore` už je připravený a vylučuje:
-- `admin/config.php` (citlivá data)
-- `uploads/` (nahrané soubory)
-- `contact-submissions/` (citlivá data)
-- Systémové soubory (.DS_Store, atd.)
+Projekt je připravený pro GitHub. Všechny soubory budou nahrány včetně `admin/config.php`.
 
 ### 1.2. Vytvoření Git repozitáře (pokud ještě není)
 
@@ -141,7 +137,7 @@ nano admin/config.php
 2. Upravte hodnoty (SITE_URL, heslo, email)
 3. Přidejte do `.gitignore` výjimku nebo použijte environment variables
 
-**POZOR:** `admin/config.php` obsahuje heslo - **NE** commitněte ho do Git! Použijte Render Environment Variables nebo vytvořte na serveru.
+**POZORNOST:** `admin/config.php` obsahuje heslo. Pokud jste ho přidali do Git, zvažte použití Render Environment Variables místo toho.
 
 ### 4.2. Render Environment Variables (lepší způsob)
 
@@ -229,8 +225,7 @@ Render automaticky:
 ## Důležité poznámky
 
 - ⚠️ Render má **free tier**, ale služby se "uspí" po 15 minutách neaktivity (první požadavek pak může trvat 30-60 sekund)
-- ⚠️ `admin/config.php` s heslem **NIKDY necommitujte** do Git!
-- ✅ Použijte Environment Variables nebo vytvořte config.php přímo na Render
+- ⚠️ Pokud máte `admin/config.php` v Git repozitáři, zvažte použití Environment Variables místo toho pro větší bezpečnost
 
 ---
 
