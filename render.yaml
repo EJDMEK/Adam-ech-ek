@@ -1,7 +1,7 @@
 services:
   - type: web
     name: preklad-nemcina-web
-    runtime: php
+    env: php
     buildCommand: ""
     startCommand: php -S 0.0.0.0:$PORT router.php
     envVars:
